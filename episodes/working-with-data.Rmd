@@ -4,43 +4,6 @@ teaching: 120
 exercises: 4
 ---
 
-<!-- - importing complete_old CSV -->
-<!--     - touch on column parsing -->
-<!--     - talk about file paths and tab completion -->
-<!--     - should we teach the `here()` package? -->
-<!-- - base vs. tidyverse -->
-<!-- - pipes -->
-<!-- - select -->
-<!-- - filter -->
-<!--     - idea of conditional subsetting -->
-<!--     - ==, >, !, |, & -->
-<!--     - show %in% -->
-<!-- - mutate -->
-<!-- - making a date column -->
-<!-- - group_by -->
-<!--   - summarize -->
-<!--   - mutate -->
-<!--   - ungroup -->
-<!-- - pivot_wider -->
-<!-- - exporting data -->
-
-<!-- Challenge ideas: -->
-
-<!-- - plotting a time series using the date -->
-<!-- - predicting # of rows before pivoting -->
-<!--   - important to plan out reshaping steps in advance -->
-<!-- - filter operations -->
-<!--   - weight between two values -->
-<!--   - maybe throw in an | example -->
-<!-- - combination filter and select where doing the order wrong yields an error -->
-<!--   - only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA -->
-<!-- - a couple of simple group_by operations -->
-<!--   - how many combinations of plot id and genus are there -->
-<!--     - could show that distinct also works here -->
-<!--   - what will happen if you group by weight? -->
-<!--   - an operation that requires group_by and mutate -->
-<!--   - an operation that requires multiple group_by steps -->
-  
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - How do you manipulate tabular data in R?
@@ -128,7 +91,7 @@ We choose to teach the `tidyverse` set of packages because they share a similar 
 
 One of the most important skills for working with data in R is the ability to manipulate, modify, and reshape data. The `dplyr` and `tidyr` packages in the `tidyverse` provide a series of powerful functions for many common data manipulation tasks.
 
-We'll start off with two of the most commonly used `dplyr` functions: `select()`, which selects certain columns of a data.frame, and `filter()`, which filters out rows according to certain criteria.
+We'll start off with two of the most commonly used `dplyr` functions: `select()`, which selects certain columns of a data.frame, and `filter()`, which keep rows according to certain criteria.
 
 :::::::::::::::::::::::::::::::::::::::::: callout
 
@@ -251,11 +214,11 @@ surveys %>%
 What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable **pipeline**. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a `select()` function, and it comes out modified somewhat. It then gets sent into the `filter()` function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of `%>%` as meaning "and then". Since many `tidyverse` functions have verbs for names, a pipeline can be read like a sentence.
 
 
-:::::::::::::::::::::::::::::::::::::::::::: instructor
-It's worth showing the learners that you can run a **pipeline** without highlighting the whole thing. If your cursor is on any line of a pipeline, running that line will run the whole thing.
+:::::::::::::::::::::::::::::::::::::::::: callout
 
-You can also show that by highlighting a section of a pipeline, you can run only the first X steps of it.
-::::::::::::::::::::::::::::::::::::::::::::
+We're using the original version of the pipe introduced to R via the tidyverse (`%>%`), but it's worth pointing out, that since R 4.1.0+ there is now a native pipe operator (`|>`). You may see the native pipe operator in other online resources or communities. RStudio provides an option to switch under Tools > Global options > Code > Use native pipe operator. There are some subtle differences between the two, which you can read more about [here](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/). 
+
+::::::::::::::::::::::::::::::::::::::::::
 
 If we want to store this final product as an object, we use an assignment arrow at the start:
 

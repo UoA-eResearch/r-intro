@@ -17,7 +17,7 @@ exercises: 0
 - Describe the purpose of the different RStudio panes
 - Organize files and directories into R Projects
 - Use the RStudio help interface to get help with R functions
-- Be able to format questions to get help in the broader R community
+- Be able to format questions to get help from the broader R community
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -28,32 +28,6 @@ R refers to a programming language as well as the software that runs R code.
 [RStudio](https://rstudio.com) is a software interface that can make it easier to write R scripts and interact with the R software. It's a very popular platform, and RStudio also maintains the [`tidyverse`](https://www.tidyverse.org/) series of packages we will use in this lesson.
 
 ## Why learn R?
-
-<br>
-
-:::::::::::::::::::::::: instructor
-
-You can walk through this analogy if you want, or skip over it if you don't find it useful.
-
-::::::::::::::::::::::::
-
-:::::::::::::::::::::::: solution
-
-## Your new pedantic collaborator...
-
-You're working on a project when your advisor suggests that you begin working with one of their long-time collaborators. According to your advisor, this collaborator is very talented, but only speaks a language that you don't know. Your advisor assures you that this is ok, the collaborator won't judge you for starting to learn the language, and will happily answer your questions. However, the collaborator is also quite pedantic. While they don't mind that you don't speak their language fluently yet, they are always going to answer you quite literally.
-
-You decide to reach out to the collaborator. You find that they email you back very quickly, almost immediately most of the time. Since you're just learning their language, you often make mistakes. Sometimes, they tell you that you've made a grammatical error or warn you that what you asked for doesn't make a lot of sense. Sometimes these warnings are difficult to understand, because you don't really have a grasp of the underlying grammar. Sometimes you get an answer back, with no warnings, but you realize that it doesn't make sense, because what you asked for isn't quite what you *wanted*. Since this collaborator responds almost immediately, without tiring, you can quickly reformulate your question and send it again.
-
-In this way, you begin to learn the language your collaborator speaks, as well as the particular way they think about your work. Eventually, the two of you develop a good working relationship, where you understand how to ask them questions effectively, and how to work through any issues in communication that might arise.
-
-This collaborator's name is R.
-
-When you send commands to R, you get a response back. Sometimes, when you make mistakes, you will get back a nice, informative error message or warning. However, sometimes the warnings seem to reference a much "deeper" level of R than you're familiar with. Or, even worse, you may get the wrong answer with no warning because the command you sent is perfectly valid, but isn't what you actually want. While you may first have some success working with R by memorizing certain commands or reusing other scripts, this is akin to using a collection of tourist phrases or pre-written statements when having a conversation. You might make a mistake (like getting directions to the library when you need a bathroom), and you are going to be limited in your flexibility (like furiously paging through a tourist guide looking for the term for "thrift store").
-
-This is all to say that we are going to spend a bit of time digging into some of the more fundamental aspects of the R language, and these concepts may not feel as immediately useful as, say, learning to make plots with `ggplot2`. However, learning these more fundamental concepts will help you develop an understanding of how R thinks about data and code, how to interpret error messages, and how to flexibly expand your skills to new situations.
-
-:::::::::::::::::::::::::::::
 
 ### R does not involve lots of pointing and clicking, and that's a good thing
 
@@ -120,7 +94,7 @@ RStudio puts most of the things you need to work in R into a single window, and 
 
 ## Getting set up in RStudio
 
-It is a good practice to organize your projects into self-contained folders right from the start, so we will start building that habit now. A well-organized project is easier to navigate, more reproducible, and easier to share with others. Your project should start with a top-level folder that contains everything necessary for the project, including data, scripts, and images, all organized into sub-folders.
+It is good practice to organize your projects into self-contained folders right from the start, so we will start building that habit now. A well-organized project is easier to navigate, more reproducible, and easier to share with others. Your project should start with a top-level folder that contains everything necessary for the project, including data, scripts, and images, all organized into sub-folders.
 
 RStudio provides a "Projects" feature that can make it easier to work on individual projects in R. We will create a project that we will keep everything for this workshop.
 
@@ -128,13 +102,15 @@ RStudio provides a "Projects" feature that can make it easier to work on individ
 2. In the top right, you will see a blue 3D cube and the words "Project: (None)". Click on this icon.
 3. Click **New Project** from the dropdown menu.
 4. Click **New Directory**, then **New Project**.
-5. Type out a name for the project, we recommend `R-Ecology-Workshop`.
-6. Put it in a convenient location using the "Create project as a subdirectory of:" section. We recommend your `Desktop`. You can always move the project somewhere else later, because it will be self-contained.
+5. Type out a name for the project, we recommend `r-intro`.
+6. Put it in a convenient location using the "Create project as a subdirectory of:" section. For now, we recommend your `Desktop`. You can always move the project somewhere else later, because it will be self-contained.
 7. Click **Create Project** and your new project will open.
+
+We're creating a new project for the purposes of this workshop, but if you wanted to use the RStudio project feature with an existing folder of work, then you could select that folder and set up the r project there by selecting **Existing Directory** after selecting **New Project**.
 
 Next time you open RStudio, you can click that 3D cube icon, and you will see options to open existing projects, like the one you just made.
 
-One of the benefits to using RStudio Projects is that they automatically set the **working directory** to the top-level folder for the project. The working directory is the folder where R is working, so it views the location of all files (including data and scripts) as being relative to the working directory. You may come across scripts that include something like `setwd("/Users/YourUserName/MyCoolProject")`, which directly sets a working directory. This is usually much less portable, since that specific directory might not be found on someone else's computer (they probably don't have the same username as you). Using RStudio Projects means we don't have to deal with manually setting the working directory.
+One of the benefits to using RStudio Projects is that they automatically set the **working directory** to the folder you chose for the project. The working directory is the folder where R is working, so it views the location of all files (including data and scripts) as being relative to the working directory. You may come across scripts that include something like `setwd("/Users/YourUserName/MyCoolProject")`, which directly sets a working directory. This is usually much less portable, since that specific directory might not be found on someone else's computer (they probably don't have the same username as you). Using RStudio Projects means we don't have to deal with manually setting the working directory.
 
 There are a few settings we will need to adjust to improve the reproducibility of our work. Go to your menu bar, then click Tools → Global Options to open up the Options window.
 
@@ -144,16 +120,12 @@ Make sure your settings match those highlighted in yellow. We don't want RStudio
 
 ## Organizing your project directory
 
-:::::::::::::::::::::::::::::::::::::::::::: instructor
-If you are teaching remotely and sharing only the RStudio window, the new windows that pop up while creating folders will not be shared via Zoom. You can switch to sharing your entire screen, which will allow learners to see the popup windows.
-::::::::::::::::::::::::::::::::::::::::::::
-
 Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.
 
 We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:
 
 ```
-R-Ecology-Workshop
+r-intro
 │
 └── scripts
 │
@@ -166,13 +138,13 @@ R-Ecology-Workshop
 └─── documents
 ```
 
-Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely untouched, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
+Within our project folder (`r-intro`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely untouched, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
 
-Let's start making our new folders. Go to the **Files** pane (bottom right), and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
+Let's start making our new folders. Go to the **Files** pane (bottom right), and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `r-intro`. You shouldn't see any folders in here yet. Note: some of the screenshots were taken from a course where the project folder was called `R-Ecology-Workshop`.
 
 ![](fig/files_pane.png){alt='RStudio Files pane with current directory path highlighted.'}
 
-Next, click the **New Folder** button, and type in `scripts` to generate your `scripts` folder. It should appear in the Files list now. Repeat the process to make your `data`, `images`, and `documents` folders. Then, click on the `data` folder in the Files pane. This will take you into the `data` folder, which will be empty. Use the **New Folder** button to create `raw` and `cleaned` folders. To return to the `R-Ecology-Workshop` folder, click on it in the file path, which is highlighted in yellow in the previous image. It's worth noting that the **Files** pane helps you create, find, and open files, but moving through your files won't change where the **working directory** of your project is.
+Next, click the **New Folder** button, and type in `scripts` to generate your `scripts` folder. It should appear in the Files list now. Repeat the process to make your `data`, `images`, and `documents` folders. Then, click on the `data` folder in the Files pane. This will take you into the `data` folder, which will be empty. Use the **New Folder** button to create `raw` and `cleaned` folders. To return to the `r-intro` folder, click on it in the file path, which is highlighted in yellow in the previous image. It's worth noting that the **Files** pane helps you create, find, and open files, but moving through your files won't change where the **working directory** of your project is.
 
 ## Working in R and RStudio
 
