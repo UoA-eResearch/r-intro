@@ -55,7 +55,7 @@ This is all to say that we are going to spend a bit of time digging into some of
 
 :::::::::::::::::::::::::::::
 
-### R does not involve lots of pointing and clicking, and that's a good thing
+### R doesn't involve lots of pointing and clicking, and that's a good thing
 
 Since R is a programming language, the results of your analysis do not rely on remembering a succession of pointing and clicking, but instead on a series of written commands, and that's a good thing! So, if you want to redo your analysis because you collected more data, you don't have to remember which button you clicked in which order to obtain your results; you just have to run your script again.
 
